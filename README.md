@@ -11,6 +11,7 @@ Run docker-compose.
 `docker-compose up -d`
 
 Move to the workspace container and run some commands to make laravel work.  
+`docker exec -it [workspace_container_name] /bin/bash`  
 `cd /var/www/laravel`  
 `mv .env.example .env`
 
@@ -19,7 +20,9 @@ Then, generate the application key.
 
 `php artisan key:generate`  
 `composer install`  
-`php artisan migrate:fresh --seed`
+`php artisan migrate --seed`  
+OR  
+`php artisan migrate:fresh --seed`  
 
 Now, you'll see a user name on the following URL.  
 http://localhost/users
