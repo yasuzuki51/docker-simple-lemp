@@ -11,15 +11,15 @@ Run docker-compose.
 `docker-compose up -d`
 
 Move to the workspace container and run some commands to make laravel work.  
-`cd /var/www/laravel`
+`cd /var/www/laravel`  
 `mv .env.example .env`
 
 Modify Database section in .env file in order to connect mysql container.  
 Then, generate the application key.  
 
-`php artisan key:generate`
-`composer install`
+`php artisan key:generate`  
+`composer install`  
 `php artisan migrate:fresh --seed`
 
-Now, You can access to the following URL.  
-http://localhost
+Now, you'll see a user name on the following URL.  
+http://localhost/users
