@@ -8,16 +8,26 @@ services:
       - app
     volumes:
       - ./web/default.conf:/etc/nginx/conf.d/default.conf
-      - ./source/html:/var/www/html
+      - ./source/var/www:/var/www
 
   app:
     build: ./app
     volumes:
-      - ./source/html:/var/www/html
+      - ./source/var/www:/var/www
       - ./app/php.ini:/usr/local/etc/php/php.ini
 
   workspace:
     build: ./workspace
     tty: true
     volumes:
-      - ./source/html:/var/www/html
+      - ./source/var/www:/var/www
+
+  db:
+    build: ./db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
